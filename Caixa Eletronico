@@ -1,0 +1,16 @@
+# Caixa Eletrônico - Menor quantidade de cédulas
+
+# Solicita o valor ao usuário
+valor = int(input("Digite o valor a ser sacado: R$ "))
+
+# Lista com os valores das cédulas disponíveis
+cedulas = [200, 100, 50, 20, 10, 5, 2, 1]
+
+print("\nVocê receberá:")
+
+# Loop para calcular a quantidade de cada cédula
+for cedula in cedulas:
+    if valor >= cedula:
+        qtd = valor // cedula
+        valor = valor % cedula
+        print(f"Cédulas de R${cedula}: {qtd}")
