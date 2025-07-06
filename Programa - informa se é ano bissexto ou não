@@ -1,0 +1,9 @@
+
+# Pede o ano ao usuário
+ano = int(input(&quot;Digite um ano: &quot;))
+
+# Verifica se é bissexto
+if (ano % 4 == 0 and ano % 100 != 0) or (ano % 400 == 0):
+print(&quot;Esse ano é bissexto.&quot;)
+else:
+print(&quot;Esse ano não é bissexto.&quot;)
