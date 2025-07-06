@@ -1,0 +1,7 @@
+# programa que pede um número ao usuário e informa se o número é Par ou Ímpar.
+
+numero = int(input('digite um número inteiro:'))
+if numero % 2 == 0:
+  print(f"O numero {numero} é PAR.")
+else:
+ print(f"O numero {numero} é IMPAR")
