@@ -1,0 +1,7 @@
+#solicite a idade do usuario
+
+idade = int(input('digite a sua idade'))
+if idade >= 65:
+  print ('você possui gratuidade na passagem')
+if idade <65:
+    print ('você não possui gratuidade na passagem')
