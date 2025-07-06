@@ -1,0 +1,15 @@
+#solicitar nota 1 
+print('por favor inserir a sua nota_1')
+nota_1 = float(input())
+#solicitar nota 2
+print('por favor inserir a sua nota_2')
+nota_2 = float(input())
+#somar as notas para obter a média
+media = float (nota_1 + nota_2) / 0.5
+print('sua média é:')
+if media <= 5:
+ print('reprovado')
+elif media >=7:
+print('aprovado')
+elif media > 5 and media <7:
+ print('recuperação') 
