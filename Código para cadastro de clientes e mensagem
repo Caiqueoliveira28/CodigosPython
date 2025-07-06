@@ -1,0 +1,12 @@
+# Cadastro simples de usuário
+dados = {
+    "Nome": input("Digite seu nome: "),
+    "Email": input("Digite seu email: "),
+    "Telefone": input("Digite seu telefone: "),
+    "Endereço": input("Digite seu endereço: "),
+    "Mensagem": input("Deixe sua mensagem: ")
+}
+
+print("\nDados recebidos:")
+for chave, valor in dados.items():
+    print(f"{chave}: {valor}")
