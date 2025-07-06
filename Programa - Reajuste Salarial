@@ -1,0 +1,22 @@
+# Solicita o salário atual do usuário
+salario = float(input(&quot;Informe seu salário atual: R$ &quot;))
+# Define as faixas de reajuste
+if salario &lt; 1500:
+percentual = 25
+elif salario &lt; 2000:
+percentual = 20
+elif salario &lt; 3000:
+percentual = 15
+elif salario &lt; 5000:
+percentual = 10
+else:
+percentual = 5
+# Calcula o valor do aumento e o novo salário
+aumento = salario * (percentual / 100)
+salario_final = salario + aumento
+# Exibe os resultados
+print(&quot;\n--- Reajuste Salarial ---&quot;)
+print(f&quot;Salário atual: R$ {salario:.2f}&quot;)
+print(f&quot;Percentual de reajuste: {percentual}%&quot;)
+print(f&quot;Valor do aumento: R$ {aumento:.2f}&quot;)
+print(f&quot;Salário final com reajuste: R$ {salario_final:.2f}&quot;)
