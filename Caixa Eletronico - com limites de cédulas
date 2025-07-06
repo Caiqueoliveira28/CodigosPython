@@ -1,0 +1,31 @@
+# Caixa Eletrônico com limite de cédulas (máx 5 por valor)
+
+# Solicita o valor ao usuário
+valor = int(input("Digite o valor a ser sacado: R$ "))
+
+# Lista com os valores das cédulas disponíveis
+cedulas = [200, 100, 50, 20, 10, 5, 2, 1]
+
+# Dicionário com o limite de cada cédula
+limite_cedulas = {cedula: 5 for cedula in cedulas}
+
+# Dicionário para armazenar a quantidade usada de cada cédula
+resultado = {}
+
+# Loop para calcular a quantidade de cada cédula, respeitando o limite
+for cedula in cedulas:
+    if valor >= cedula and limite_cedulas[cedula] > 0:
+        qtd_necessaria = valor // cedula
+        qtd_usada = min(qtd_necessaria, limite_cedulas[cedula])
+        valor -= qtd_usada * cedula
+        if qtd_usada > 0:
+            resultado[cedula] = qtd_usada
+
+# Exibe o resultado
+print("\nVocê receberá:")
+for cedula, qtd in resultado.items():
+    print(f"Cédulas de R${cedula}: {qtd}")
+
+# Verifica se o saque foi possível
+if valor > 0:
+    print(f"\nNão foi possível sacar R${valor} restante com as cédulas disponíveis.")
