@@ -1,0 +1,22 @@
+
+# Solicita o peso do usuário
+peso = float(input("Digite seu peso em kg (ex: 70.5): "))
+
+# Solicita a altura do usuário
+altura = float(input("Digite sua altura em metros (ex: 1.75): "))
+
+# Calcula o IMC
+imc = peso / (altura ** 2)
+
+# Exibe o IMC com 2 casas decimais
+print(f"\nSeu IMC é: {imc:.2f}")
+
+# Classificação simples do IMC
+if imc < 18.5:
+    print("Classificação: Abaixo do peso")
+elif imc < 25:
+    print("Classificação: Peso ideal")
+elif imc < 30:
+    print("Classificação: Sobrepeso")
+else:
+    print("Classificação: Obesidade")
