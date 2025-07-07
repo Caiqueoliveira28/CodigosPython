@@ -1,0 +1,16 @@
+# Solicita ao usuário o valor original do produto
+valor = float(input("Digite o valor do produto (ex: 18.93): R$ "))
+
+# Solicita ao usuário a porcentagem de desconto que será aplicada
+desconto = float(input("Digite o percentual de desconto (ex: 10 para 10%): "))
+
+# Calcula o valor de desconto em reais
+valor_desconto = (desconto / 100) * valor
+
+# Calcula o valor final com o desconto aplicado
+valor_final = valor - valor_desconto
+
+# Mostra os resultados formatando com duas casas decimais
+print(f"\nValor original: R$ {valor:.2f}")
+print(f"Desconto de {desconto}%: R$ {valor_desconto:.2f}")
+print(f"
