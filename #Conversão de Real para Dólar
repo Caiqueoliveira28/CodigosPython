@@ -1,0 +1,11 @@
+# Valor do dólar hoje (exemplo)
+cotacao_dolar = 5.45
+
+# Pede ao usuário o valor em reais
+valor_reais = float(input("Digite o valor em reais (R$): "))
+
+# Faz a conversão
+valor_dolar = valor_reais / cotacao_dolar
+
+# Mostra o resultado
+print(f"Com R$ {valor_reais:.2f}, você tem aproximadamente US$ {valor_dolar:.2f}")
