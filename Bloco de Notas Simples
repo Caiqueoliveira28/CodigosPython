@@ -1,0 +1,35 @@
+# Bloco de Notas Simples
+
+def escrever_nota():
+    nota = input("Digite sua anotação: ")
+    with open("bloco_de_notas.txt", "a") as arquivo:
+        arquivo.write(nota + "\n")
+    print("Anotação salva com sucesso!")
+
+def ler_notas():
+    try:
+        with open("bloco_de_notas.txt", "r") as arquivo:
+            conteudo = arquivo.read()
+            print("\n--- Suas anotações ---")
+            print(conteudo)
+    except FileNotFoundError:
+        print("Nenhuma anotação encontrada.")
+
+# Menu simples
+while True:
+    print("\nO que você deseja fazer?")
+    print("1 - Escrever uma nova anotação")
+    print("2 - Ler anotações salvas")
+    print("3 - Sair")
+
+    escolha = input("Escolha uma opção (1, 2 ou 3): ")
+
+    if escolha == "1":
+        escrever_nota()
+    elif escolha == "2":
+        ler_notas()
+    elif escolha == "3":
+        print("Saindo do bloco de notas.")
+        break
+    else:
+        print("Opção inválida. Tente novamente.")
