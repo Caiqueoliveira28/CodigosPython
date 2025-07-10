@@ -1,1 +1,28 @@
+import random
 
+def simular_lancamentos(n):
+    # Inicializa um dicionário para contar as ocorrências de cada soma
+    contagem = {soma: 0 for soma in range(2, 13)}
+    
+    for _ in range(n):
+        dado1 = random.randint(1, 6)
+        dado2 = random.randint(1, 6)
+        soma = dado1 + dado2
+        contagem[soma] += 1
+    
+    return contagem
+
+# Entrada do usuário
+n = int(input("Quantas vezes deseja lançar os dois dados? "))
+
+# Simular os lançamentos
+resultados = simular_lancamentos(n)
+
+# Exibir os resultados
+print("\nResultados após", n, "lançamentos:")
+for soma, quantidade in resultados.items():
+    print(f"Soma {soma}: {quantidade} vezes")
+
+# Encontrar a soma mais frequente
+soma_mais_frequente = max(resultados, key=resultados.get)
+print(f"\nA soma que mais caiu foi {soma_mais_frequente}, com {resultados[soma_mais_frequente]} ocorrências.")
