@@ -1,0 +1,23 @@
+#importar bibliotecas
+import random
+
+#placar
+vitorias = 0
+derrotas = 0
+empate = 0
+
+#instruções
+print('bem vindo ao Pedra, Papel, Tesoura')
+print('digite R para pedra, T para tesoura e P para papel ou Q para sair')
+
+while True:
+  #jogada do jogador
+  jogador = input('digite sua jogada:')
+  if jogador == 'Q':
+    break 
+  elif jogador == 'R' or jogador == 'T' or jogador == 'P':
+      computador = random.choice(['R','T','P'])
+      print('computador jogou:',computador)
+      if jogador =='R'and computador == 'T':
+        print('voce ganhou')
+        vitorias += 1
