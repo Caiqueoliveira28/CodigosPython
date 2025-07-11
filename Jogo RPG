@@ -1,0 +1,57 @@
+import random  # Para usar números aleatórios
+
+# Pontos de vida
+vida_jogador = 10
+vida_computador = 10
+
+print("=== JOGO DE BATALHA ===")
+print("Você tem dois ataques:")
+print("1 - Cabeçada (Poder 4, causa 3 de dano e recebe 1)")
+print("2 - Soco (Poder aleatório de 1 a 6, dano aleatório de 1 a 6)")
+
+# Enquanto ninguém estiver com vida 0
+while vida_jogador > 0 and vida_computador > 0:
+    print("\nSua vida:", vida_jogador, "| Vida do computador:", vida_computador)
+
+    # Escolha do jogador
+    escolha = input("Escolha seu ataque (1 - Cabeçada, 2 - Soco): ")
+
+    if escolha == "1":
+        poder_jogador = 4
+        dano_jogador = 3
+        dano_extra = 1  # dano que você toma mesmo ganhando
+    elif escolha == "2":
+        poder_jogador = random.randint(1, 6)
+        dano_jogador = random.randint(1, 6)
+        dano_extra = 0
+    else:
+        print("Escolha inválida. Tente novamente.")
+        continue
+
+    # Ataque do computador (sempre usa soco aleatório)
+    poder_computador = random.randint(1, 6)
+    dano_computador = random.randint(1, 6)
+
+    print(f"Seu poder: {poder_jogador} | Poder do computador: {poder_computador}")
+
+    # Verifica quem vence o turno
+    if poder_jogador > poder_computador:
+        print(f"Você venceu o turno e causou {dano_jogador} de dano!")
+        vida_computador -= dano_jogador
+        vida_jogador -= dano_extra  # se usou cabeçada, perde 1 de vida
+        if dano_extra > 0:
+            print("Você se machucou um pouco com a cabeçada e perdeu 1 de vida.")
+    elif poder_computador > poder_jogador:
+        print(f"Computador venceu o turno e causou {dano_computador} de dano!")
+        vida_jogador -= dano_computador
+    else:
+        print("Empate! Ninguém atacou.")
+
+# Fim do jogo
+print("\n=== FIM DE JOGO ===")
+if vida_jogador <= 0 and vida_computador <= 0:
+    print("Empate! Os dois caíram juntos!")
+elif vida_jogador <= 0:
+    print("Você perdeu! 😢")
+else:
+    print("Você venceu! 🎉")
