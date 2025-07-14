@@ -1,0 +1,22 @@
+import tkinter as tk
+from time import strftime
+
+def atualizar_relogio():
+    horario_atual = strftime('%H:%M:%S %p')  # Formato: 00:00:00 AM/PM
+    label_relogio.config(text=horario_atual)
+    label_relogio.after(1000, atualizar_relogio)  # Atualiza a cada 1000ms (1 segundo)
+
+# Criar a janela principal
+janela = tk.Tk()
+janela.title("Relógio Digital")
+janela.geometry("300x100")  # Largura x Altura
+
+# Configurar o rótulo do relógio
+label_relogio = tk.Label(janela, font=('Arial', 40, 'bold'), background='black', foreground='white')
+label_relogio.pack(anchor='center')
+
+# Iniciar a atualização do relógio
+atualizar_relogio()
+
+# Manter a janela aberta
+janela.mainloop()
