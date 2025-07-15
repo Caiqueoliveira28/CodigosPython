@@ -1,0 +1,52 @@
+def lista_de_compras():
+    # Cria uma lista vazia para armazenar os itens
+    itens = []
+    
+    print("Bem-vindo à Lista de Compras!")
+    print("Digite os itens que deseja adicionar à lista.")
+    print("Digite 'fim' para terminar ou 'remover' para apagar um item.")
+    
+    while True:
+        # Mostra a lista atual
+        if itens:
+            print("\nSua lista atual:")
+            for i, item in enumerate(itens, 1):
+                print(f"{i}. {item}")
+        else:
+            print("\nSua lista está vazia.")
+        
+        # Pede ao usuário para adicionar ou remover um item
+        acao = input("\nDigite um item para adicionar, 'remover' ou 'fim': ").strip()
+        
+        if acao.lower() == 'fim':
+            break
+        elif acao.lower() == 'remover':
+            if not itens:
+                print("A lista está vazia, não há itens para remover.")
+                continue
+            try:
+                num = int(input("Digite o número do item a remover: "))
+                if 1 <= num <= len(itens):
+                    item_removido = itens.pop(num-1)
+                    print(f"'{item_removido}' foi removido da lista.")
+                else:
+                    print("Número inválido.")
+            except ValueError:
+                print("Por favor, digite um número válido.")
+        else:
+            itens.append(acao)
+            print(f"'{acao}' foi adicionado à lista.")
+    
+    # Mostra a lista final
+    print("\nSua lista de compras final:")
+    if itens:
+        for i, item in enumerate(itens, 1):
+            print(f"{i}. {item}")
+    else:
+        print("(vazia)")
+    
+    print("\nBoa compra!")
+
+# Executa o programa
+if __name__ == "__main__":
+    lista_de_compras()
