@@ -1,0 +1,20 @@
+import matplotlib.pyplot as plt
+
+def criar_grafico_barras():
+    # Dados para o gráfico
+    categorias = ['Maçãs', 'Bananas', 'Laranjas', 'Uvas', 'Morangos']
+    quantidades = [15, 30, 22, 12, 25]
+    
+    # Criar o gráfico de barras
+    plt.bar(categorias, quantidades, color=['red', 'yellow', 'orange', 'purple', 'pink'])
+    
+    # Adicionar título e rótulos
+    plt.title('Venda de Frutas')
+    plt.xlabel('Frutas')
+    plt.ylabel('Quantidade Vendida')
+    
+    # Mostrar o gráfico
+    plt.show()
+
+# Chamar a função para exibir o gráfico
+criar_grafico_barras()
