@@ -1,0 +1,41 @@
+def validar_primeiro_digito(cpf):
+    # Remover pontos e traço, mantendo apenas os dígitos
+    cpf_numeros = [int(c) for c in cpf if c.isdigit()]
+    
+    if len(cpf_numeros) != 11:
+        return False
+    
+    # Os primeiros 9 dígitos do CPF
+    numeros = cpf_numeros[:9]
+    
+    # Pesos para multiplicação: 10, 9, 8, ..., 2
+    pesos = list(range(10, 1, -1))
+    
+    # Passo 1: Multiplicar cada número pelo seu peso
+    produtos = [n * p for n, p in zip(numeros, pesos)]
+    
+    # Passo 2: Somar os resultados
+    soma = sum(produtos)
+    
+    # Passo 3: Multiplicar por 10
+    multiplicado = soma * 10
+    
+    # Passo 4: Obter o resto da divisão por 11
+    resto = multiplicado % 11
+    
+    # Passo 5: Determinar o dígito verificador
+    digito = 0 if resto > 9 else resto
+    
+    # Passo 6: Comparar com o primeiro dígito verificador
+    primeiro_digito_verificador = cpf_numeros[9]
+    
+    return digito == primeiro_digito_verificador
+
+# Entrada do usuário
+cpf_input = input("Digite um CPF no formato XXX.XXX.XXX-XX: ")
+
+# Validar
+if validar_primeiro_digito(cpf_input):
+    print("Primeiro dígito verificador VÁLIDO")
+else:
+    print("Primeiro dígito verificador INVÁLIDO")
