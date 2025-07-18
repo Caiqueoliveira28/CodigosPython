@@ -1,0 +1,41 @@
+def validar_cpf(cpf):
+    # Remover pontos e traço, deixando apenas os números
+    numeros = [int(c) for c in cpf if c.isdigit()]
+    
+    if len(numeros) != 11:
+        return False
+    
+    # Validar primeiro dígito verificador
+    soma = 0
+    for i in range(9):
+        soma += numeros[i] * (10 - i)
+    
+    resto = (soma * 10) % 11
+    if resto == 10:
+        resto = 0
+    
+    if resto != numeros[9]:
+        return False
+    
+    # Validar segundo dígito verificador
+    soma = 0
+    pesos = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2]
+    for i in range(10):
+        soma += numeros[i] * pesos[i]
+    
+    resto = (soma * 10) % 11
+    if resto == 10:
+        resto = 0
+    
+    if resto != numeros[10]:
+        return False
+    
+    return True
+
+# Entrada do usuário
+cpf = input("Digite o CPF no formato XXX.XXX.XXX-XX: ")
+
+if validar_cpf(cpf):
+    print("CPF válido")
+else:
+    print("CPF inválido")
