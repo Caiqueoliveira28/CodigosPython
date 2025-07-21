@@ -1,0 +1,26 @@
+from datetime import datetime
+
+def calcular_dias_desde_data():
+    print("Calculadora de Dias desde uma Data")
+    print("----------------------------------")
+    
+    while True:
+        try:
+            data_str = input("Digite uma data (formato DD/MM/AAAA): ")
+            data_usuario = datetime.strptime(data_str, "%d/%m/%Y").date()
+            
+            data_atual = datetime.now().date()
+            diferenca = data_atual - data_usuario
+            
+            print(f"\nDesde {data_str} já se passaram {diferenca.days} dias.")
+            break
+            
+        except ValueError:
+            print("Formato de data inválido. Por favor, use DD/MM/AAAA.")
+            
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
+            break
+
+if __name__ == "__main__":
+    calcular_dias_desde_data()
