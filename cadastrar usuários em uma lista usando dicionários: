@@ -1,0 +1,39 @@
+# Lista vazia para armazenar os usuários
+lista_usuarios = []
+
+def cadastrar_usuario():
+    """
+    Função para cadastrar um usuário
+    
+    Passo a passo:
+    1. Pede o nome e idade ao usuário
+    2. Cria um dicionário com essas informações
+    3. Adiciona o dicionário na lista de usuários
+    4. Mostra mensagem de confirmação
+    """
+    print("\n--- Cadastro de Usuário ---")
+    nome = input("Digite o nome: ")
+    idade = int(input("Digite a idade: "))
+    
+    # Cria o dicionário com os dados
+    usuario = {
+        "nome": nome,
+        "idade": idade
+    }
+    
+    # Adiciona à lista
+    lista_usuarios.append(usuario)
+    print(f"Usuário {nome} cadastrado com sucesso!")
+
+
+# Exemplo de uso:
+while True:
+    cadastrar_usuario()
+    continuar = input("\nDeseja cadastrar outro usuário? (s/n): ").lower()
+    if continuar != 's':
+        break
+
+# Mostra todos os usuários cadastrados
+print("\n--- Usuários Cadastrados ---")
+for usuario in lista_usuarios:
+    print(f"Nome: {usuario['nome']}, Idade: {usuario['idade']}")
