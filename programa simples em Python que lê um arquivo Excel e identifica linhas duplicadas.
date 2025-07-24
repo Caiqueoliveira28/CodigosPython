@@ -1,0 +1,59 @@
+import pandas as pd
+
+def encontrar_duplicados(arquivo_excel, colunas=None, mostrar_todos=False):
+    """
+    Função para identificar dados duplicados em um arquivo Excel.
+    
+    Parâmetros:
+    - arquivo_excel: caminho do arquivo Excel
+    - colunas: lista de colunas para verificar duplicados (None verifica todas)
+    - mostrar_todos: se True, mostra todos os registros duplicados; se False, mostra apenas os duplicados
+    """
+    try:
+        # Ler o arquivo Excel
+        df = pd.read_excel(arquivo_excel)
+        
+        print(f"Total de linhas no arquivo: {len(df)}")
+        
+        # Verificar duplicados
+        duplicados = df[df.duplicated(subset=colunas, keep=False)]
+        
+        if duplicados.empty:
+            print("\nNenhum dado duplicado encontrado!")
+            return
+        
+        print(f"\nTotal de linhas duplicadas: {len(duplicados)}")
+        print(f"Total de registros únicos que têm duplicatas: {len(duplicados.drop_duplicates(subset=colunas))}")
+        
+        if mostrar_todos:
+            print("\nTodos os registros duplicados:")
+            print(duplicados.sort_values(by=colunas if colunas else duplicados.columns.tolist()))
+        else:
+            print("\nAmostra de registros duplicados (primeiras 5 linhas):")
+            print(duplicados.drop_duplicates(subset=colunas).head())
+            
+        # Opção para salvar os resultados
+        salvar = input("\nDeseja salvar os resultados em um novo arquivo Excel? (s/n): ").lower()
+        if salvar == 's':
+            nome_saida = input("Digite o nome do arquivo de saída (sem extensão): ")
+            duplicados.to_excel(f"{nome_saida}.xlsx", index=False)
+            print(f"Resultados salvos em {nome_saida}.xlsx")
+            
+    except Exception as e:
+        print(f"\nOcorreu um erro: {e}")
+
+if __name__ == "__main__":
+    print("=== Identificador de Dados Duplicados em Excel ===")
+    arquivo = input("Digite o caminho do arquivo Excel: ")
+    
+    # Opção para verificar duplicados em colunas específicas
+    colunas_especificas = input("Deseja verificar duplicados em colunas específicas? (s/n): ").lower()
+    colunas = None
+    
+    if colunas_especificas == 's':
+        colunas = input("Digite os nomes das colunas separados por vírgula: ").split(',')
+        colunas = [c.strip() for c in colunas]
+    
+    mostrar_todos = input("Deseja ver todos os registros duplicados? (s/n): ").lower() == 's'
+    
+    encontrar_duplicados(arquivo, colunas, mostrar_todos)
