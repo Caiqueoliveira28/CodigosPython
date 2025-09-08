@@ -1,0 +1,34 @@
+class Heroi:
+    def __init__(self, nome, idade, tipo):
+        self.nome = nome
+        self.idade = idade
+        self.tipo = tipo.lower()  # Convertendo para minúsculo para facilitar as comparações
+    
+    def atacar(self):
+        # Definindo o ataque baseado no tipo do herói
+        if self.tipo == "mago":
+            ataque = "usou magia"
+        elif self.tipo == "guerreiro":
+            ataque = "usou espada"
+        elif self.tipo == "monge":
+            ataque = "usou artes marciais"
+        elif self.tipo == "ninja":
+            ataque = "usou shuriken"
+        else:
+            ataque = "usou um ataque desconhecido"
+        
+        # Exibindo a mensagem de ataque
+        print(f"o {self.tipo} atacou usando {ataque}")
+
+# Exemplo de uso da classe
+# Criando heróis de diferentes tipos
+heroi1 = Heroi("Merlin", 100, "mago")
+heroi2 = Heroi("Conan", 35, "guerreiro")
+heroi3 = Heroi("Li", 40, "monge")
+heroi4 = Heroi("Hanzo", 25, "ninja")
+
+# Testando os ataques
+heroi1.atacar()  # o mago atacou usando usou magia
+heroi2.atacar()  # o guerreiro atacou usando usou espada
+heroi3.atacar()  # o monge atacou usando usou artes marciais
+heroi4.atacar()  # o ninja atacou usando usou shuriken
